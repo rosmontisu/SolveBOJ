@@ -1,5 +1,5 @@
 # SolveBOJ
 
-boj 풀었던거 옮기는중
+boj 푼거 몇개 저장용
 
 
