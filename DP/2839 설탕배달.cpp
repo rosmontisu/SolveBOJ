@@ -25,9 +25,7 @@ int main(void)
 		//dp[i-5] 가 존재 하면?
 		//현재 dp[i]에 값이 있는지 확인후 넣습니다.
 		if (dp[i - 5])
-			dp[i] = dp[i] ? min(dp[i], dp[i - 5] + 1) : dp[i - 5] + 1;
-			
-
+			dp[i] = dp[i] ? min(dp[i], dp[i - 5] + 1) : dp[i - 5] + 1;		
 	}
 
 	cout << (dp[n] == 0 ? -1 : dp[n]) << endl;
