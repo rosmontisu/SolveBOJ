@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int dp[5001]; // global 이므로 배열이 0으로 초기화된ㄷ다.
+int dp[5001]; // global 이므로 배열이 0으로 초기화된다.
 
 int main(void)
 {
