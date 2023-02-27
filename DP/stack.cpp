@@ -54,7 +54,6 @@ int main(void)
     }
 
     for (int i = 0; i < vec.size(); i++)
-    {
-        cout << vec[i] << '\n'; // 시간 초과 해결 endl..
-    } 
+        cout << vec[i] << '\n'; // 찾아보니까 emdl로 하면 시간초과 뜬다고 한다
+
 }
