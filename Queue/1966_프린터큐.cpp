@@ -33,7 +33,6 @@ void solve()
     //sort(strat, end, compare)
     sort(vec.begin(), vec.end());
 
-
     /*
     위의 과정으로 vec은 검사해야 하는 중요도를 순서대로 가지고 있으며,
     pair queue는 필요한 수라면 1, 아니라면 0으로 pair되어있다.
