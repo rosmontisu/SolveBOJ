@@ -1,0 +1,5 @@
+E:\1_Code\SolveBOJ\obj\Debug\net6.0\SolveBOJ.csproj.AssemblyReference.cache
+E:\1_Code\SolveBOJ\obj\Debug\net6.0\SolveBOJ.GeneratedMSBuildEditorConfig.editorconfig
+E:\1_Code\SolveBOJ\obj\Debug\net6.0\SolveBOJ.AssemblyInfoInputs.cache
+E:\1_Code\SolveBOJ\obj\Debug\net6.0\SolveBOJ.AssemblyInfo.cs
+E:\1_Code\SolveBOJ\obj\Debug\net6.0\SolveBOJ.csproj.CoreCompileInputs.cache
