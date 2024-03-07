@@ -1,3 +1,5 @@
+//4n-3 꼴로 길이가 나온다 
+
 #include <iostream>
 #include <vector>
 #include <string>
