@@ -3,3 +3,4 @@
 debug/
 build/
 .bin
+.cph/
