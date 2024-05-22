@@ -41,7 +41,7 @@ void Bfs()
             int nx = cur.first + dx[dir];
             int ny = cur.second + dy[dir];
 
-            if (nx < 1 || ny < 1 || nx > n || ny > m) continue; // 범위 설정 잘하기 <- 여기서 계속 오류
+            if (nx < 1 || ny < 1 || nx > n || ny > m) continue; // 범위 설정 잘하기 <- 여기서 오류가 났던것
             if (map_copy[nx][ny] == 1 || dist[nx][ny] > 0) continue;     
 
             dist[nx][ny] = dist[cur.first][cur.second] + 1;
