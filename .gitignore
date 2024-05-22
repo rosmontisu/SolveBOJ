@@ -2,5 +2,5 @@
 .vscode
 debug/
 build/
-.bin
 .cph/
+*.bin
