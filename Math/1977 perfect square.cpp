@@ -1,15 +1,6 @@
 #include <iostream>
 using namespace std;
 
-void input();
-void answer(int m, int n);
-
-int main()
-{
-    input();
-    return 0;
-}
-
 void input()
 {
     int M, N;
@@ -17,7 +8,6 @@ void input()
     cin >> N;
     answer(M, N);
 }
-
 void answer(int m, int n)
 {
     int sum = 0;
@@ -44,3 +34,8 @@ void answer(int m, int n)
     }
 }
 
+int main()
+{
+    input();
+    return 0;
+}
