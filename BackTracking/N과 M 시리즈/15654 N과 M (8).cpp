@@ -24,7 +24,7 @@ n개의 시작점을 루프돌리면서 더 깊은곳에서 다시 n-1루프
 유의점은 다른 n&m 문제와 다르게 중복(isUsed)검사가 필요없고, 대신 오름차순(비내림차순)검사(now >= before) or 현재 사용중인 배열 위치 정보가 필요하다.
 */
 
-vector<int> nums;
+vector<int> chars;
 int n, m;
 vector<int> answer;
 
@@ -40,7 +40,7 @@ void dfs(int start, int depth)
 
 	for (int i = start; i < n; i++)
 	{
-		answer.push_back(nums[i]);
+		answer.push_back(chars[i]);
 		dfs(i, depth+1);
 		answer.pop_back();
 	}
@@ -55,10 +55,10 @@ int main()
 	{
 		int input;
 		cin >> input;
-		nums.push_back(input);
+		chars.push_back(input);
 	}
 
-	sort(nums.begin(), nums.end());
+	sort(chars.begin(), chars.end());
 	dfs(0, 0);
 
 	return 0;

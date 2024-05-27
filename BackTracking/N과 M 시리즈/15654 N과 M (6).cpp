@@ -8,35 +8,32 @@ vector<int> chars;
 vector<int> answer;
 bool isUsed[10001];
 
-void dfs(int depth)
+
+void dfs(int depth, int cur)
 {
 	if (depth == m)
 	{
 		for (int i = 0; i < m; i++)
 			cout << answer[i] << ' ';
 		cout << '\n';
-		return; 
+		return;
 	}
 
-	// 수열의 중복을 피하기 위해서, lastNum 변수를 만들었습니다.
-	// 이때, 변수의 위치에 주의하여야합니다. 
-	// 전역 변수의 형태로 선언하면 정상적으로 작동 x
-	int lastNum = 0;
-	for (int i = 0; i < n; i++)
+	for (int i = cur; i < n; i++)
 	{
-		if(!isUsed[i] && lastNum != chars[i])
+		if (!isUsed[i])
 		{
 			isUsed[i] = true;
-			lastNum = chars[i];
 			answer.push_back(chars[i]);
-			dfs(depth + 1);
+			dfs(depth + 1, i);
 			answer.pop_back();
 			isUsed[i] = false;
 		}
+		
 	}
 }
 
-int main()
+int main(void)
 {
 	ios::sync_with_stdio(false);
 	cin.tie(0);
@@ -47,10 +44,10 @@ int main()
 		int input;
 		cin >> input;
 		chars.push_back(input);
-	}
+	}	
 
 	sort(chars.begin(), chars.end());
-	dfs(0);
+	dfs(0, 0);
 
 	return 0;
 }
