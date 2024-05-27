@@ -26,9 +26,7 @@ n개의 시작점을 루프돌리면서 더 깊은곳에서 다시 n-1루프
 
 vector<int> nums;
 int n, m;
-
 vector<int> answer;
-bool isUsed[10001]; // n개의 수의 사용 여부를 담을 배열
 
 void dfs(int start, int depth)
 {
