@@ -19,10 +19,8 @@ int Bfs()
     q.push({0, 0});
     while(!q.empty())
     {
-        
     }
 }
-
 
 int main()
 {
