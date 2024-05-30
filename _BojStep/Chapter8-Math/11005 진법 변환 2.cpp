@@ -1,28 +1,35 @@
 #include <iostream>
-#include <math.h>
-#include <string>
 using namespace std;
 
-char iToZ(int n)
+char iToZ(int intnum)
 {
-    if (n > 10)
-        return n+55;
+    if (intnum >= 10)
+        return intnum + 'A' - 10;
     else
-        return n+'0';
+        return intnum + '0';
 }
 
 int main()
 {
     int n, b;
     cin >> n >> b;
-    string str = {};
+    char answer[1000];
+    int count = 0;
 
-    for (int i = 1; i < b; i++)
+    if (n == 0)
     {
-        n/=b;
-        str[i] = iToZ(n%(int)(pow(b, i)));
+        cout << '0';
+        return 0;
     }
 
-    for (int i = b; i > 0; i--)
-        cout << str[i];
+    while (n > 0)
+    {
+        answer[count] = iToZ(n % b);
+        n /= b;
+        count++;
+    }
+
+    for (int i = count - 1; i >= 0; i--)
+        cout << answer[i];
+
 }
