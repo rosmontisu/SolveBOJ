@@ -45,6 +45,8 @@ int main()
         // 위 처럼 입력 받았을때 더 상위 조상의 구분이 없이 모두 바로 부모로 연결되어버린다.
         // 부모1 - 부모2 - 자식 형태를 구분할 수 있게 개선이 필요
         // indegree로 측정하면?
+        
+        // 입력 부분 다시 구현해야될듯 ㄴㅁㅇㄻㄴㅇㄹㅇㅁㄴㄹㄴㅇㅁㄹ
         adj[nameToID.at(str2)].push_back(str1); 
         indegree[nameToID.at(str1)]++;
     }
@@ -73,6 +75,7 @@ int main()
         }
     }
 
+    // 4. 출력
     for (int i = 1; i <= k; i++)
     {
         for (auto s : result[i])
