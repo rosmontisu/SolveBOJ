@@ -3,3 +3,4 @@
 #include <vector>
 using namespace std;
 
+int n, m;
