@@ -18,28 +18,30 @@ int main(void)
 	cin.tie(0);
 	
 	cin >> n >> m;
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < m; j++) {
+	for (int i = 0; i < n; i++)
+		for (int j = 0; j < m; j++) 
 			cin >> map[i][j];
-		}
-	}
-	//Q.push({ 0,0 });
-	//vis[0][0] = 1;
+
 	int maxArea = 0;
 	int num = 0;
 
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < m; j++) {
+	for (int i = 0; i < n; i++) 
+	{
+		for (int j = 0; j < m; j++) 
+		{
 			if (map[i][j] == 0 || vis[i][j]) continue;
 
-			num++; // 새로운 그림의 시작점을 찾음
-			vis[i][j] = 1;
-			Q.push({ i,j });
+			// 새로운 그림의 시작점을 찾음
+			num++; 
+			vis[i][j] = true;
+			Q.push({ i, j });
 			int area = 0;
-			while (!Q.empty()) {
+			while (!Q.empty()) 
+			{
 				area++;
 				pair<int, int> cur = Q.front(); Q.pop();
-				for (int dir = 0; dir < 4; dir++) {
+				for (int dir = 0; dir < 4; dir++) 
+				{
 					int nowX = cur.first + dx[dir];
 					int nowY = cur.second + dy[dir];
 					if (nowX < 0 || nowY < 0 || nowX >= n || nowY >= m)
