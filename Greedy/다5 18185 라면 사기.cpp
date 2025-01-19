@@ -6,6 +6,15 @@ but) 이후에 계속 top을 찾는 과정에서 비용이 든다
 2. 4개씩 묶어서 생각하는 방식
 -> A B C 0 이 경우에 중앙이 뾰족하면 문제가 생긴다? 
 라는 반례를 쓰레기님 로직 보고 알았는데 굳이 0이 필요한가?
+```
+if((min({arr[i+1],arr[i+2],arr[i+3]}) != 0) && (arr[i] < arr[i+1]) &&(arr[i+2] < arr[i+1]))
+        {
+            arr_min = (arr[i] < (arr[i+1] - arr[i+2]))? arr[i]:(arr[i+1] - arr[i+2]);
+            arr[i] -= arr_min;
+            arr[i+1] -= arr_min;
+            coin += 5 * arr_min;
+        }
+```
 
 3. 3개씩 묶기 
 -> 
