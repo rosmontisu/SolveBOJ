@@ -31,9 +31,9 @@ int main()
     }
 
     // 플로이드 시작
-    for (int i = 0; i < n; i++) // 0번부터 전부 경유할것
+    for (int i = 0; i < n; i++) // 0번부터 전부 경유할것 
     {
-        for (int j = 0; j < n; j++) // 출발지에서
+        for (int j = 0; j < n; j++) // 
         {
             for (int k = 0; k < n; k++) // 모든 도착지를 검사
             {
