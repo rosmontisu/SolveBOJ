@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 const int INF = 100000*101; // 존재하지 않는 경로 edge는 inf로 설정
