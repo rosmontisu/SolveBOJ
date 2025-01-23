@@ -4,7 +4,7 @@
 using namespace std;
 
 const int INF = 100000*101; // 존재하지 않는 경로 edge는 inf로 설정
-int map[102][102]; 
+int map[102][102];
 
 int main()
 {
@@ -45,9 +45,9 @@ int main()
                 // map[j][k] = 직통 비용
                 if (map[j][i] + map[i][k] < map[j][k])
                     map[j][k] = map[j][i] + map[i][k];
+                }
             }
         }
-    }
 
     // i에서 j로 가는 최소비용 출력 (모든도시)
     for (int i = 0; i < n; i++)
@@ -58,7 +58,7 @@ int main()
                 cout << 0 << ' ';
             else
                 cout << map[i][j] << ' ';
-        }
+    }
         cout << '\n';
     }
     return 0;
