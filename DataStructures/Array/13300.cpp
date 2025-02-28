@@ -27,3 +27,5 @@ int main()
 
     cout << ans;
 }
+
+// fragmentation EBP-ESP 중간제공 EBX 
