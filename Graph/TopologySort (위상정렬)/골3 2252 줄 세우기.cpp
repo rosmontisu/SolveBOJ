@@ -28,7 +28,7 @@ int main()
         if (degree[i] == 0) q.push(i);
 
     // 위상 정렬 알고리즘 시작
-    // bfs와 유사한 과정임을 볼 수 있다.
+    // BFS를 기반으로 작동한다는걸 볼 수 있다.
     while (!q.empty())
     {
         int cur = q.front(); q.pop();
