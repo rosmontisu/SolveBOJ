@@ -12,8 +12,7 @@ vector<int> p(1000002, -1);
 // path compression
 int find(int x)
 {
-    if (p[x] < 0)
-        return x;
+    if (p[x] < 0) return x; // -가 나오면 본인 x가 root node라는 뜻 !
     return p[x] = find(p[x]); // find(p[x])로 root를 대입 후 반환
 }
 
