@@ -1,29 +1,3 @@
-/*
-1. Binary를 이용하는 이유? : 모든 숫자는 2의 거듭제곱의 합으로 표현이 가능하기 때문입니다.
-2. 2^k 탐색은 왜 안전한가? : 큰 단위부터 확인하는 Greedy접근법이므로(값이 초과되면 사용하지 않음) 안전합니다.
-3. DP의 방향? : 모든 노드는 단 1개의 부모만 가집니다. 이 '유일성'때문에 Bottom-Up 방식을 채택합니다.
-
-ㅁ Bottom-Up 계산 과정
-parent[k][i] (i의 2^k번째 조상) 테이블을 채우는것이 목표입니다.
-
-1. Base Case
-- DFS를 실행하면 모든 노드에 대해 O(N)으로 얻을 수 있습니다.
-- parent[0][i] (i의 2^0번째 조상; 즉 i의 부모)
-
-2. 점화식을 이용해 DP테이블 채우기 (k=1, 2, 3...)
- (k=1). parent[1][i] (i의 k^1번째 조상) 2번째 조상
- - i의 2번째 조상 => (i의 부모)의 (부모) = (parent[0][i])의 (부모)
- - parent[1][i] = parent[0][parent[0][i]]
-
- (k=2). parent[2][i] (i의 k^2번째 조상) 4번째 조상
- - i의 4번째 조상 => (i의 2번째 조상)의 (2번째 조상) = (parent[1][i])의 (2번째 조상)
- - parent[2][i] = parent[1][parent[1][i]]
-
- (결론)
- parent[k][i] = parent[k-1][parent[k-1][i]]
- - i의 2^k번째 조상 => (i의 2^(k-1)조상)의 (2^(k-1)조상)
-*/
-
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -35,7 +9,6 @@ vector<int> adj[MAX_N]; // 트리
 int parent[LOG_MAX_N][MAX_N]; // parent[k][i] : i의 2^k번째 조상
 int depth[MAX_N];
 
-
 // DFS로 각 노드의 깊이와 직속 부모(Base Case; parent[0][i]) 계산
 void dfs(int here, int p, int d)
 {
@@ -44,8 +17,7 @@ void dfs(int here, int p, int d)
 
     for (int there : adj[here])
     {
-        // 부모 노드로 돌아가지 않도록 스킾
-        if (there == p) continue;
+        if (there == p) continue; // 부모 노드로 돌아가지 않도록 스킾
         dfs(there, here, d + 1);
     }
 }
