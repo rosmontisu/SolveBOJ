@@ -18,7 +18,7 @@ void dfs(int here, int p, int d)
     for (int there : adj[here])
     {
         if (there == p) continue; // 부모 노드로 돌아가지 않도록 스킾
-        dfs(there, here, d + 1);
+        dfs(there, here, d + 1);                            
     }
 }
 
