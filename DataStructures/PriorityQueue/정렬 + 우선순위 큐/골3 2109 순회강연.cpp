@@ -12,7 +12,7 @@ int main()
     for (int i = 0; i < n; i++)
         cin >> vec[i].second >> vec[i].first;
 
-    sort(vec.begin(), vec.end()); // 오름차순
+    sort(vec.begin(), vec.end());
 
     priority_queue<int, vector<int>, greater<int>> pq; // min heap
     for (int i = 0; i < n; i++)
@@ -21,7 +21,7 @@ int main()
         int p = vec[i].second;
 
         pq.push(p);
-        
+
         if (pq.size() > d) pq.pop();
     }
 
