@@ -14,8 +14,8 @@ int main()
 
     for (int i = 1; i <= n; i++)
     {
-        int nn; cin >> nn;
-        v[i] = v[i - 1] + nn;
+        int x; cin >> x;
+        v[i] = v[i - 1] + x;
     }
 
     while (m--)
