@@ -1,4 +1,4 @@
-// 무식하게 부르트 포스로 풀엇 (n * m = 40000)
+// 무식하게 풀어도 시간초과 안나네요 (n * m = 40000)
 
 #include <iostream>
 #include <vector>
