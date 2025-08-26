@@ -11,7 +11,7 @@ int main()
     for (int i = 1; i <= n; i++)
         cin >> a[i];
 
-    int ans = n+1;
+    int ans = n + 1;
     int l = 1;
     int r = 0;
     int sum = 0;
@@ -28,5 +28,6 @@ int main()
         else sum += a[++r];
     }
 
-    cout << ans;
+    if (ans == n + 1) cout << 0;
+    else cout << ans;
 }
