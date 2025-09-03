@@ -8,8 +8,12 @@ vector<int> p(10005, -1);
 
 int find(int x)
 {
-    if (p[x] < 0) return x; // base condition
+    if (p[x] < 0) return x; // base case
     return p[x] = find(p[x]); // path compression
+
+    int root = find(p[x]);
+    p[x] = root;
+    return root;
 }
 
 bool union_(int u, int v)
