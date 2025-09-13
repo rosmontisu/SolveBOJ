@@ -1,5 +1,4 @@
 #include <iostream>
-#include <stack>
 #include <vector>
 #include <algorithm>
 using namespace std;
@@ -7,88 +6,77 @@ using namespace std;
 #define X first
 #define Y second
 
-vector<pair<int, int>> v;
-
-bool CCW(pair<int, int> a, pair<int, int> b, pair<int, int> c)
+struct Point
 {
-    return (a.X * b.Y + b.X * c.Y + c.X * a.Y
-      - a.Y * b.X - b.Y * c.X - c.Y * a.X) > 0; // 반시계 방향
-}
-/*
-모노토 체인 Monotone Chain
-*/
+    long long x, y;
+};
 
+// 신발끈 공식 (구)
+long long CCW(pair<int, int> p1, pair<int, int> p2, pair<int, int> p3)
+{
+    // 세 점 P1, P2, P3로 이루어진 삼각형의 넓이
+    return (p1.X * p2.Y + p2.X * p3.Y + p3.X * p1.Y)
+         - (p1.Y * p2.X + p2.Y * p3.X + p3.Y * p1.X);
+}
+
+// 벡터 외적 (cross product)
+long long ccw(Point p1, Point p2, Point p3)
+{
+    // 벡터 P1->P2                  벡터 P1->P3
+    // (p2.x - p1.x, p2.y - p1.y)  (p3.x - p1.x, p3.y - p1.y)
+    return (p2.x - p1.x) * (p3.y - p1.y) - (p2.y - p1.y) * (p3.x - p1.x);
+}
+
+
+// 모노톤 체인 Monotone Chain
 int main()
 {
-    int n;
-    cin >> n;
+    int n; cin >> n;
 
+    vector<Point> v(n);
+    for (int i = 0; i < n; i++)
+        cin >> v[i].x >> v[i].y;
+
+
+    // 좌표 오름차순
+    sort(v.begin(), v.end(), [](Point a, Point b)
+    {
+        if (a.x == b.x)
+            return a.y < b.y;
+        else
+            return a.x < b.x;
+    });
+
+    if (n <= 2)
+    {
+        cout << n;
+        return 0;
+    }
+
+    
+    vector<Point> hull;
+    
+    // lower hull
     for (int i = 0; i < n; i++)
     {
-        int x, y;
-        cin >> x >> y;
-        v.push_back({x, y});
+        while (hull.size() >= 2 && ccw(hull[hull.size() - 2], hull.back(), v[i]) <= 0)
+            hull.pop_back();
+
+        hull.push_back(v[i]);
     }
 
-    sort(v.begin(), v.end()); // x 좌표 우선 오름차순 정렬
-
-    // 윗껍질 구하기
-    stack<pair<int, int>> stk;
-    stk.push(v[0]); // 기준점
-    stk.push(v[1]); // 기준점 다음 점
-    for (int i = 2; i < n; i++)
+    // upper hull - 역순
+    int lower = hull.size();
+    for (int i = n - 2; i >= 0; i--)
     {
-        while (stk.size() >= 2)
-        {
-            pair<int, int> a, b, c;
-        
-            c = v[i];
-            b = stk.top(); stk.pop();
-            a = stk.top(); 
+        while (hull.size() > lower && ccw(hull[hull.size() - 2], hull.back(), v[i]) <= 0)
+            hull.pop_back();
 
-            // 시계 방향으로 꺾일때
-            if(CCW(a, b, c))
-            {
-                stk.push(b); // 원상복귀
-                //stk.push(c); // 새 좌표 추가
-                break;
-            }
-        }
-        stk.push(v[i]); // 새 좌표 추가
+        hull.push_back(v[i]);
     }
-    int answer = 0;
-    answer += stk.size(); // 윗껍질의 수
 
+    // 시작점, 마지막점 중복 1개 제거
+    cout << hull.size() - 1;
 
-
-    // 아래껍질 구하기 - 반대편부터 역순으로 검사
-    stack<pair<int, int>> stk2;
-    stk2.push(v[n - 1]); // 반대편 기준점
-    stk2.push(v[n - 2]); // 기준점 다음 점
-    for (int i = n - 3; i >= 0; i--)
-    {
-        while (stk2.size() >= 2)
-        {
-            pair<int, int> a, b, c;
-        
-            c = v[i];
-            b = stk2.top(); stk2.pop();
-            a = stk2.top(); 
-
-            // 반시계 방향으로 꺾일때
-            if(CCW(a, b, c))
-            {
-                stk2.push(b); // 원상복귀
-                //stk2.push(c); // 새 좌표 추가
-                break;
-            }
-        }
-        stk2.push(v[i]); // 새 좌표 추가
-    }
-    answer += stk2.size();
-    answer -= 2;
-
-    // 이게 맞?나
-    if (answer < 3) cout << 3;
-    else cout << answer;
+    return 0;
 }
