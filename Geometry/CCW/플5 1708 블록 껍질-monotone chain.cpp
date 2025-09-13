@@ -3,24 +3,21 @@
 #include <algorithm>
 using namespace std;
 
-#define X first
-#define Y second
-
 struct Point
 {
     long long x, y;
 };
 
 // 신발끈 공식 (구)
-long long CCW(pair<int, int> p1, pair<int, int> p2, pair<int, int> p3)
+long long ccw1(Point p1, Point p2, Point p3)
 {
     // 세 점 P1, P2, P3로 이루어진 삼각형의 넓이
-    return (p1.X * p2.Y + p2.X * p3.Y + p3.X * p1.Y)
-         - (p1.Y * p2.X + p2.Y * p3.X + p3.Y * p1.X);
+    return (p1.x * p2.y + p2.x * p3.y + p3.x * p1.y)
+         - (p1.y * p2.x + p2.y * p3.x + p3.y * p1.x);
 }
 
 // 벡터 외적 (cross product)
-long long ccw(Point p1, Point p2, Point p3)
+long long ccw2(Point p1, Point p2, Point p3)
 {
     // 벡터 P1->P2                  벡터 P1->P3
     // (p2.x - p1.x, p2.y - p1.y)  (p3.x - p1.x, p3.y - p1.y)
@@ -53,7 +50,7 @@ int main()
         return 0;
     }
 
-    
+
     vector<Point> hull;
     
     // lower hull
