@@ -5,7 +5,7 @@
 #include <queue>
 using namespace std;
 
-vector<int> edj[1002];
+vector<int> adj[1002];
 bool vis[1002];
 int n, p; // 컴퓨터의 수, 쌍의 수
 void bfs();
@@ -21,8 +21,8 @@ int main(void)
 	while (p--)
 	{
 		cin >> v >> u;
-		edj[v].push_back(u);
-		edj[u].push_back(v);
+		adj[v].push_back(u);
+		adj[u].push_back(v);
 	}
 
 	bfs();
@@ -40,7 +40,7 @@ void bfs()
 	{
 		int cur = q.front();
 		q.pop();
-		for (auto nxt : edj[cur])
+		for (auto nxt : adj[cur])
 		{
 			if (vis[nxt]) continue;
 			q.push(nxt);
